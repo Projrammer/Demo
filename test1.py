@@ -3,7 +3,7 @@ import threading
 import time
 import multiprocessing
 
-no = 10000000
+no = 100000000
 
 
 def addition(a, b):
@@ -14,6 +14,9 @@ def addition(a, b):
 
 def sqrt(x):
     return x * x
+
+xs = range(no)
+
 
 
 # t1 = threading.Thread(target=addition(1,no))
@@ -27,8 +30,13 @@ if __name__ == '__main__' :
     coreNo = multiprocessing.cpu_count()
     print(coreNo)
     pool = multiprocessing.Pool(processes=coreNo)
-    xs = range(no)
+
     array = pool.map(sqrt, xs)
     print(len(array))
 
     print(time.time() - t)
+
+# t = time.time()
+# for i in xs:
+#     aa = sqrt(i)
+# print(time.time() - t)
